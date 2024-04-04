@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --delay-time: 0.1s;
+}
+
+/* als erstes stylen wir den wrapper */
+.wrapper {
+    /* wir setzen den wrapper auf 100% der browserinhaltsgröße */
+    height: 100vh;
+    width: 100vw;
+    /* wir sorgen dafür, das alle inhalte in der mitte der seite zentriert sind, indem wir flexbox nutzen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* wir setzen die schrift aller kinder des wrapper auf Lato */
+    font-family: "Lato", sans-serif;
+    /* wir setzen die hintergrundfarbe auf #262626 */
+    background: #262626;
+}
+
+/* wir setzen die ul auf display: flex;, da die buchstaben dann, duch den default wert flex-direction: row; nebeneinander liegen. */
+.wrapper ul {
+    display: flex;
+}
+
+/* jetzt stylen wir die buchstaben */
+.wrapper ul li {
+    /* wir setzen die schriftgröße auf 80px, was genau 5 rem ergibt */
+    font-size: 5rem;
+    /* wir entfernen die punkte von den listenelementen */
+    list-style: none;
+    /* jetzt setzen wir die standardfarbe der buchstaben auf #484848 */
+    color: #484848;
+    /* jetzt sorgen wir mit letter-spacing: ; für einen abstand zwischen den buchstaben. */
+    letter-spacing: 1rem;
+}
+
+/* wir erstellen unsere animation */
+@keyframes lighting {
+    0% {
+        /* bei 0% wollen wir das es keinen schatten gibt, und die farbe gleich bleibt, wie am anfang */
+        color: #484848;
+        text-shadow: none;
+    }
+
+    /* um den effekt ganz kurz zu halten, setzen wir die gleichen werte von 0 noch einmal kurz vor 100% ein, umso näher wir die zahl an die 100% bringen, umso extremer wird der cut zwischen den werten */
+    85% {
+        color: #484848;
+        text-shadow: none;
+    }
+
+    /* bei 100% wollen wir das die farbe des textes und des schattens bei #fff900 ist, und ein zweiter, sehr langer schatten bei #ff6c00 ist. */
+    100% {
+        color: #fff900;
+        /* der textschatten ist nah am element gelb und besitzt einen weiteren verlauf, der sehr weit nach außen geht in orange; */
+        text-shadow: 
+            0 0 7px #fff900,
+            0 0 50px #ff6c00;
+    }
+}
+
+/* jetzt weisen wir die animation den buchstaben zu */
+.wrapper ul li {
+    animation: lighting 1.4s linear infinite;
+}
+
+/* jetzt sehen wir die animation durchlaufen. Um sie jetzt in der richtigen reihenfolge anzuzeigen, müssen wir den einzelnen li's nur ein paar delays verpassen */
+
+/* das erste element hat kein delay, wir können dies aber trotzdem hier angeben, damit wir eine bessere übersicht über unsere delays haben */
+.wrapper ul li:nth-child(1) {
+    animation-delay: 0.0s;
+}
+
+/* jetzt setzen wir jedes einzelne element auf 0.1 sekunden weiter */
+.wrapper ul li:nth-child(2) {
+    animation-delay: var(--delay-time);
+}
+
+.wrapper ul li:nth-child(3) {
+    animation-delay: calc(var(--delay-time) * 2);
+}
+
+.wrapper ul li:nth-child(4) {
+    animation-delay: calc(var(--delay-time) * 3);
+}
+
+.wrapper ul li:nth-child(5) {
+    animation-delay: calc(var(--delay-time) * 4);
+}
+
+.wrapper ul li:nth-child(6) {
+    animation-delay: calc(var(--delay-time) * 5);
+}
+
+.wrapper ul li:nth-child(7) {
+    animation-delay: calc(var(--delay-time) * 6);
+}
+
+.wrapper ul li:nth-child(8) {
+    animation-delay: calc(var(--delay-time) * 7);
+}
